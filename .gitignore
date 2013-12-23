@@ -1,0 +1,7 @@
+# Ignored files
+
+*~
+
+# Python
+*.pyc
+*.pyo
