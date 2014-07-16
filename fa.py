@@ -26,6 +26,10 @@ def F(U, A, alpha, D, x0, e0, dt=1):
     phi = arctan2(dot(e0, rhat), dot(e0, rhatp))
  
     h = r0 - A  # We need to check if we are inside the colloid
+    if(h <= 2.0):
+        wall=1
+    else:
+        wall=0
 
 
     # Compute the image velocity field (full approximation)
@@ -34,10 +38,14 @@ def F(U, A, alpha, D, x0, e0, dt=1):
     Omtilde = -alpha * 3 * A**3 * (2 * A**2 + 6 * A * h + 3 * h**2) * sin(2 * phi) / (4 * h**3 * (A + h)**2 * (2 * A + h)**3)
 
     # Compute the increment in position and angle variation
-    hdot = U * dot(e0, rhat) + utilde_rhat
+    if(wall==1):
+        hdot = 0
+    else:
+        hdot = U * dot(e0, rhat) + utilde_rhat
+   
     gdot = U * dot(e0, rhatp) + utilde_rhatp
 
-    # Framework lab
+    # Lab framework
     # xdot = hdot * rhat[0] + gdot * rhatp[0]
     # ydot = hdot * rhat[1] + gdot * rhatp[1]
     # zdot = hdot * rhat[2] + gdot * rhatp[2]
