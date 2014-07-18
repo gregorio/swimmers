@@ -66,8 +66,8 @@ if __name__ == "__main__":
     alpha = 0.8                 # Dipole strength  
     D = 0.01                    # Diffusion
     x0 = [-30.0, -40.0, -40.0]  # Initial position
-    e0 = [1.0, 0.0, 0.0]        # Initial direction
+    e0 = [0.0, -1.0, 0.0]        # Initial direction
 
     print F(U, A, alpha, D, x0, e0)
 
-    F(U, A, alpha, D, x0, e0)
+    #F(U, A, alpha, D, x0, e0)
