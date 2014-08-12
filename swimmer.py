@@ -4,6 +4,8 @@
 
 from fa import F
 from numpy import array, zeros, hstack, savetxt, sqrt, power
+from numpy.linalg import norm
+
 
 if __name__ == "__main__":
 
@@ -11,8 +13,8 @@ if __name__ == "__main__":
     U = 1                       # Velocity
     A = 20                      # Colloid size  
     alpha = 0.8                # Dipole strength  
-    D = 10.0                   # Diffusion
-    x0 = [-50.0, -15.0, 0.0]      # Initial position
+    D = 0                  # Diffusion
+    x0 = [-50.0, -15.0, 0.0]  # Initial position
     e0 = [1.0, 0.0, 0.0]       # Initial direction
 
     # Integration Parameters
@@ -32,8 +34,11 @@ if __name__ == "__main__":
         xk = delta[k, :3]
         ek = delta[k, 3:]
 
-        delta[k + 1, :] = delta[k, :] + dt * F(U, A, alpha, D, xk, ek)[1]
+        delta[k + 1, :] = delta[k, :] + dt * F(U, A, alpha, D, xk, ek)[:6] + sqrt(dt) * F(U, A, alpha, D, xk, ek)[6:]
         t[k + 1] = t[k] + dt
+        # We need to renormalize the direction!
+        vec = delta[k + 1, 3:]/norm(delta[k + 1, 3:])
+        delta[k + 1, 3:] = vec
 
     # Save the ...
     savetxt(filename, hstack((t, delta)))

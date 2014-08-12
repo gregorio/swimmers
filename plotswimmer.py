@@ -10,14 +10,14 @@ if __name__ == "__main__":
 
     cir = pylab.Circle((0.0,0.0), radius=20.0,  fc='y')
     pylab.gca().add_patch(cir)
-    cir = pylab.Circle((0.0,21.1), radius=1.0, alpha =.2, fc='b')
+    cir = pylab.Circle((-50.0,-15.0), radius=1.0, alpha =.2, fc='b')
+    #cir = pylab.Circle((0.0,21.1), radius=1.0, alpha =.2, fc='b')
     pylab.gca().add_patch(cir)
     pylab.axis('scaled')
 
     t = data[:, 0]
     x = data[:, 1:4]
     e = data[:, 4:6]
-    d = data[:, 6]
 
     #pylab.axes(xscale=None, yscale=None)
 
