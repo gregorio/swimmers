@@ -19,15 +19,28 @@ def F(U, A, alpha, D, x0, e0, dt=1):
     e0 = array(e0)
 
     # Write the initial conditions (in the lab frame) relative to the colloid
-    r0 = norm(x0, 2)
+    r0 = norm(x0)
     rhat = x0 / r0
-    rhatp = (e0 - dot(e0, rhat) * rhat) / norm(e0 - dot(e0, rhat) * rhat)  # ZeroDivisionError
-    ep = cross(rhat, e0) / norm(cross(rhat, e0))
+
+    # Handle possible zero division errors
+    if(norm(e0 - dot(e0, rhat) * rhat) == 0):
+        rhatp = cross(random.rand(3,1),rhat) 
+        rhatp = rhatp / norm(rhatp)
+        ep = cross(random.rand(3,1), e0)
+        ep = ep / norm(ep)
+    else:
+        rhatp = (e0 - dot(e0, rhat) * rhat) / norm(e0 - dot(e0, rhat) * rhat)  
+        ep = cross(rhat, e0) / norm(cross(rhat, e0))         
+
     phi = arctan2(dot(e0, rhat), dot(e0, rhatp))
+
+
+
  
     h = r0 - A  # We need to check if we are inside the colloid
-    if(h <= 2.0):
-        wall=1
+    if(h <= 1.0):
+        wall = 1
+        h = 1.0
     else:
         wall=0
 
@@ -39,7 +52,7 @@ def F(U, A, alpha, D, x0, e0, dt=1):
 
     # Compute the increment in position and angle variation
     if(wall==1):
-        hdot = 0
+        hdot = max(0, U*dot(e0, rhat) + utilde_rhat)
     else:
         hdot = U * dot(e0, rhat) + utilde_rhat
    
@@ -106,7 +119,7 @@ if __name__ == "__main__":
     U = 1                       # Velocity
     A = 20                      # Colloid size  
     alpha = 0.8                 # Dipole strength  
-    D = 0                    # Diffusion
+    D = 0.1                    # Diffusion
     x0 = [-50.0, -15.0, 0.0]  # Initial position
     e0 = [1.0, 0.0, 0.0]        # Initial direction
 

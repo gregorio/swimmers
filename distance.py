@@ -13,18 +13,19 @@ if __name__ == "__main__":
     U = 1                       # Velocity
     A = 20                      # Colloid size  
     alpha = 0.8                # Dipole strength  
-    D = 0.04               # Diffusion, 0.001 is nice
+    D = 0.01               # Diffusion
     x0 = [0.0, 21.1, 0.0]  # Initial position
     e0 = [1.0, 0.0, 0.0]       # Initial direction
 
     # Integration Parameters
-    T = 20     # Final time
+    T = 10     # Final time
     dt = 0.001   # Mesh 
     N = int(T / dt)  # Number of iterations
-    filename = "results.csv"
+    filename = "distance.csv"
 
     delta = zeros((N, 6))
     t = zeros((N,1))
+    dist = zeros((N,1))
 
     delta[0, :] = hstack((x0, e0))
     t[0] = 0
@@ -40,7 +41,10 @@ if __name__ == "__main__":
         vec = delta[k + 1, 3:]/norm(delta[k + 1, 3:])
         delta[k + 1, 3:] = vec
 
+        pos = delta[k + 1, :3]
+        dist[k+1] = norm(pos) - A - 1
+
     # Save the ...
-    savetxt(filename, hstack((t, delta)))
+    savetxt(filename, hstack((t, dist)))
     
 
