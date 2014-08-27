@@ -49,7 +49,7 @@ function [fout_D fout_B h phi] = xytdot(t,xin,A,U,alpha,D_s)
 %     Omtilde=-3*alpha*sin(2*phi)/(16*h^3)*(1-h/(2*A)-3*h^2/(2*A^2));
 
     
-% If there is a wall, don't allow for motion through the boundary:    
+% If there is a wall, do not allow for motion through the boundary:    
     if (wall) 
         hdot=max([0 U*dot(ee,rhat)+utilde_rhat]);
     else
