@@ -13,12 +13,12 @@ if __name__ == "__main__":
     U = 1                       # Velocity
     A = 20                      # Colloid size  
     alpha = 0.8                # Dipole strength  
-    D = 0               # Diffusion
+    D = 0.01               # Diffusion
     x0 = [0.0, 21.1, 0.0]  # Initial position
     e0 = [1.0, 0.0, 0.0]       # Initial direction
 
     # Integration Parameters
-    T = 10     # Final time
+    T = 1000     # Final time
     dt = 0.001   # Mesh 
     N = int(T / dt)  # Number of iterations
     filename = "angles.csv"

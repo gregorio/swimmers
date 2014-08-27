@@ -17,7 +17,9 @@ if __name__ == "__main__":
     D = 0.05                     # Diffusion
     x0 = [0.0, 21.15, 0.0]       # Initial position
     e0 = [1.0, 0.0, 0.0]        # Initial direction
+
     trials = 2000
+
 
     dt = 0.001
 
