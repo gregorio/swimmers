@@ -14,10 +14,10 @@ if __name__ == "__main__":
     U = 1                       # Velocity
     A = 20                      # Colloid size  
     alpha = 0.8                 # Dipole strength  
-    D = 0.1                     # Diffusion
+    D = 0.05                     # Diffusion
     x0 = [0.0, 21.15, 0.0]       # Initial position
     e0 = [1.0, 0.0, 0.0]        # Initial direction
-    trials = 50
+    trials = 2000
 
     dt = 0.001
 
