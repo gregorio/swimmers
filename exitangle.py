@@ -18,7 +18,7 @@ if __name__ == "__main__":
     x0 = [0.0, 21.15, 0.0]       # Initial position
     e0 = [1.0, 0.0, 0.0]        # Initial direction
 
-    trials = 1000
+    trials = 10000
 
 
     dt = 0.001
@@ -35,6 +35,8 @@ if __name__ == "__main__":
     sum = 0
     Ts = zeros(trials+1)
     N=0
+
+    print D, trials
 
     while (N <= trials):
 
@@ -82,6 +84,9 @@ if __name__ == "__main__":
 
         N = N + 1
 
+        if(N%100 == 0):
+            print N
+
     # Recording the empirical mean
 
     #average = sum / (trials + 1)
@@ -97,6 +102,7 @@ if __name__ == "__main__":
     # variance = variance / (trials + 1)
     #print variance
 
+    print D, trials
     
 
     # the histogram of the data with histtype='step'
