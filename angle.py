@@ -18,7 +18,7 @@ if __name__ == "__main__":
     e0 = [1.0, 0.0, 0.0]       # Initial direction
 
     # Integration Parameters
-    T = 1000     # Final time
+    T = 100     # Final time
     dt = 0.001   # Mesh 
     N = int(T / dt)  # Number of iterations
     filename = "angles.csv"

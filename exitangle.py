@@ -18,7 +18,7 @@ if __name__ == "__main__":
     x0 = [0.0, 21.15, 0.0]       # Initial position
     e0 = [1.0, 0.0, 0.0]        # Initial direction
 
-    trials = 1000
+    trials = 10000
 
 
     dt = 0.001
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     #     variance = variance + (Ts[i] - average)**2
 
     # variance = variance / (trials + 1)
-    #print variance
+    # print variance
 
     
 
