@@ -36,6 +36,8 @@ if __name__ == "__main__":
     Ts = zeros(trials+1)
     N=0
 
+    print D, trials
+
     while (N <= trials):
 
         t=0
@@ -82,6 +84,9 @@ if __name__ == "__main__":
 
         N = N + 1
 
+        if(N%100 == 0):
+            print N
+
     # Recording the empirical mean
 
     #average = sum / (trials + 1)
@@ -97,6 +102,7 @@ if __name__ == "__main__":
     # variance = variance / (trials + 1)
     # print variance
 
+    print D, trials
     
 
     # the histogram of the data with histtype='step'

@@ -153,3 +153,5 @@ if __name__ == "__main__":
     
     # D_r=(2/sqrt(3))*D_s;
     # fout_B(4:6,1)=sqrt(2*D_r)*randvec; % (3/4a^2) but scaling on a so a->1
+
+    
